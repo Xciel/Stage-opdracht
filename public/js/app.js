@@ -1,78 +1,91 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ })
+/************************************************************************/
+/******/ ({
 
-new Vue ({
+/***/ 10:
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: C:/xampp/htdocs/stage-opdracht-final/resources/assets/js/app.js: Unexpected token, expected ; (65:37)\n\n  63 |             axios.get('api/tasks/',).then\n  64 |             (response => {\n> 65 |                 console.log(response))\n     |                                      ^\n  66 |                 this.tasks.push(response.data)\n  67 |                 }\n  68 | \n");
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(10);
+module.exports = __webpack_require__(40);
 
 
-    el: '#app',
+/***/ })
 
-    data: {
-        DisplayTasks: true,
-        deletedTasks: 0,
-        tasks: [],
-
-
-
-    },
-    mounted () {
-        this.fetch()
-    },
-
-
-
-
-    methods: {
-
-        AddTask: function(e) {
-            e.preventDefault();
-            axios.post('api/tasks', {
-                name: this.tasks.name,
-                done: false
-            }).then(response=> console.log(response));
-            this.tasks.push({
-                name: this.tasks.name,
-                done: false,
-            })
-        },
-
-        deleteTask: function (task) {
-
-            axios.delete('api/tasks/', {
-                name:this.tasks.name,
-            })
-            this.tasks.splice(this.tasks.indexOf(task), 1)
-            this.deletedTasks++;
-        },
-        fetch: function () {
-
-            axios.get('api/tasks/', {
-                tasks: this.then(response => {
-                    this.tasks.push(response.data)
-
-                })
-            })
-        }
-
-
-
-    },
-    computed: {
-        checkMarkedTasks: function() {
-            let count = 0;
-            for (let i = 0; i < this.tasks.length, ++i;){
-                if (this.tasks[i].done === true) {
-                    count++;
-                }
-            }
-            return count;
-        },
-
-        ProgressieTasksCompleted: function () {
-            if (this.tasks.length == 0) {
-                return 0;
-            }else {
-                return (this.checkMarkedTasks / this.tasks.length) * 100;
-            }
-        }
-
-
-    }
-});
+/******/ });
