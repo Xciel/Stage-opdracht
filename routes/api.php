@@ -30,7 +30,7 @@ Route::post('tasks', 'TaskController@store');
 
 Route::put('tasks/{id}', 'TaskController@update');
 
-Route::delete('tasks/{id}', 'TaskController@delete');
+Route::delete('tasks/{id}', 'TaskController@destroy');
 
 
 

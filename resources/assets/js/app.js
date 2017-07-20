@@ -25,6 +25,8 @@ const app = new Vue({
         DisplayTasks: true,
         deletedTasks: 0,
         tasks: [],
+        edit: false,
+        done: false,
 
 
 
@@ -52,7 +54,7 @@ const app = new Vue({
 
         deleteTask: function (task) {
 
-            axios.delete('api/tasks/', {
+            axios.delete(`api/tasks/${task.id}`, {
                 name:this.tasks.name,
             })
             this.tasks.splice(this.tasks.indexOf(task), 1)
@@ -62,9 +64,22 @@ const app = new Vue({
 
             axios.get('api/tasks/',).then
             (response => {
-                console.log(response))
-                this.tasks.push(response.data)
-                }
+                console.log(this.tasks)
+                this.tasks = (response.data)
+            })
+        },
+
+        editTask: function (task) {
+
+            axios.put(`api/tasks/${task.id}`,{name:task.name} )
+                .then(response=>{
+
+                    this.edit = false
+                    this.fetch()
+                })
+
+
+        }
 
 
 
@@ -74,7 +89,7 @@ const app = new Vue({
 
 
 
-    ,
+    },
     computed: {
         checkMarkedTasks: function() {
             let count = 0;

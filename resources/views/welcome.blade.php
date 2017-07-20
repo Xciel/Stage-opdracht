@@ -45,6 +45,56 @@
             background-color: springgreen;
         }
 
+        .panel-success > .panel-heading {
+            color: #c4e3f3;
+            background-color: #82afcd;
+            border-color: #82afcd;
+            border-bottom-width: 3px
+        }
+
+        .panel-default {
+            color: ;
+            background-color: #b9e3df;
+            border-color: #82cdc6;
+            border-bottom-width: 5px;
+        }
+
+         h1 {
+            font: "Raleway", sans-serif ;
+        }
+
+        .panel-info {
+
+            color: ;
+            background-color: #82afcd;
+            border-color: #82afcd;
+            border-bottom-width: ;
+
+        }
+
+        body {
+
+            background: #fbfdfb;
+        }
+
+        .btn-info {
+
+            background-color: #c0d5e2;
+        }
+
+        .btn-danger {
+
+            background-color: #558db0;
+
+        }
+
+        .btn-primary {
+
+            background-color: #558db0;
+        }
+
+
+
     </style>
 
 
@@ -53,12 +103,15 @@
 <body>
 <div class="container col-sm-8 col-sm-offset-2">
     <div id="app">
-        <h1>Taken lijst</h1>
+        <h1>Takenlijst</h1>
+        <i class="fa fa-rocket" aria-hidden="true"></i>
+
+
 
         <!-- nieuwe task form -->
 
         <div class="panel panel-default">
-            <h2 class="text-center">Voeg nieuwe taak toe</h2>
+            <h2 class="text-center">Taak toevoegen <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
             <form v-on:submit.prevent="AddTask">
                 <div class="col-sm-8">
                     <input type="text" class="form-control" v-model="tasks.name">
@@ -71,17 +124,22 @@
             &nbsp;
         </div>
 
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="text-center">Voortgang</h3>
-            </div>
+
+        <hr>
+        <br>
+        <br>
+
+        {{--<div class="panel panel-success">--}}
+            {{--<div class="panel-heading">--}}
+                {{--<h3 class="text-left"><i class="fa fa-rocket" aria-hidden="true"></i> </h3>--}}
+            {{--</div>--}}
 
 
-        </div>
+        {{--</div>--}}
 
         <div class="panel panel-info">
             <div class="panel-heading">
-                <div class="h3 text-center">Wat moet je nog doen? en wat is al klaar?</div>
+                <div class="h3 text-center">Overzicht takenlijst</div>
             </div>
             <div class="panel-body">
                 <div class="col-sm-6">
@@ -101,14 +159,15 @@
             <thead>
             <th>Check!</th>
             <th>Taak</th>
-            <th>Verwijder!</th>
+            <th>Verwijderen / Bewerken </th>
             </thead>
 
             <tbody>
             <tr v-for="task in tasks">
                 <td><input type="checkbox" v-model="task.done"></td>
-                <td><span :class="{ TaskDone: task.done }">@{{ task.name }}</span></td>
+                <td><input :value="task.name" :class="{ TaskDone: task.done }"></td>
                 <td>
+                    <button class="btn btn-info btn-block" v-on:click="editTask(task)">Bewerken</button>
                     <button class="btn btn-danger btn-block" v-on:click="deleteTask(task)">Verwijder</button>
                 </td>
             </tr>
