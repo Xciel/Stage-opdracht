@@ -165,7 +165,7 @@
             <tbody>
             <tr v-for="task in tasks">
                 <td><input type="checkbox" v-model="task.done"></td>
-                <td><input :value="task.name" :class="{ TaskDone: task.done }"></td>
+                <td><input v-model="task.name" :class="{ TaskDone: task.done }"></td>
                 <td>
                     <button class="btn btn-info btn-block" v-on:click="editTask(task)">Bewerken</button>
                     <button class="btn btn-danger btn-block" v-on:click="deleteTask(task)">Verwijder</button>

@@ -10504,6 +10504,7 @@ var app = new Vue({
     data: {
         DisplayTasks: true,
         deletedTasks: 0,
+        editedTask: null,
         tasks: [],
         edit: false,
         done: false
